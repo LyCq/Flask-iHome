@@ -1,0 +1,60 @@
+项目流程：
+1、阅读项目目录。
+2、创建虚拟环境、安装项目依赖：pip install -r requirements.txt。
+3、注册'容联云通讯' www.yuntongxun.com，在utils文件夹下的sms.py文件里修改配置。
+4、注册'七牛云' www.qiniu.com，在utils文件夹下的image_storage.py文件里修改配置信息，在constants.py文件里修改七牛的空间外链域名。
+5、在mysql数据库中创建数据库名称，在config文件里SQLALCHEMY_DATABASE_URI修改数据库名称。
+6、创建表：
+python manage.py db init
+python manage.py db migrate
+python manage.py db upgrade
+python manage.py db history 查看历史版本号
+python manage.py db downgrade 版本号 回退到历史版本
+7、把areas_facility.sql文件的insert语句插入数据库中。
+
+
+
+项目目录文档说明：
+1、项目根目录					说明
+	/ihome					项目应用核心目录
+	/logs					项目日志目录
+	接口文档.txt
+	需求文档.txt			
+	areas_facility.sql		房屋设施数据--可以直接在Mysql中插入数据
+	config.py				项目配置文件--类比Django中的settings文件
+	manage.py				项目启动文件
+	requirements.txt		项目依赖文件
+
+2、项目/ihome目录				说明
+	/api_1_0				项目视图函数--后端接口
+	/libs					项目用到的资源库--第三方扩展(云通信)
+	/static					项目静态文件夹
+	/utils					项目通用设施--自定义状态码、登录验证装饰器等
+	__init__.py				项目应用初始化文件--应用程序实例、数据库实例、蓝图、日志等
+	constants.py			项目常量信息--数据库缓存信息、验证码、房屋信息等
+	models.py				项目模型类
+	web_page.py				视图函数--用来处理静态页面的访问
+
+3、项目/ihome/libs目录			说明
+	/yuntongxun				第三方扩展--发送短信
+
+4、项目/ihome/static目录		说明
+	/css/					项目css文件
+	/html/					项目html文件
+	/images/				项目images文件				
+	/js/					项目js文件
+	/plugins/				项目前端插件--bootstrap、switch、swiper等
+	favicon.ico				项目logo
+
+5、项目/ihome/utils目录			说明
+	/captcha/				图片验证码生成
+	commons.py				通用设施文件--正则url、登录验证装饰器
+	image_storage.py		云存储设施文件--七牛云
+	response_code.py		自定义状态码
+	sms.python				发送短信
+
+
+
+
+
+
